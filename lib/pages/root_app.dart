@@ -9,11 +9,36 @@ class RootApp extends StatefulWidget {
 }
 
 class _RootAppState extends State<RootApp> {
+  int pageIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bgColor,
       bottomNavigationBar: getFooter(),
+      body: getBody(),
+    );
+  }
+
+  Widget getBody() {
+    return IndexedStack(
+      index: pageIndex,
+      children: [
+        Center(
+            child: Text(
+          "Contact",
+          style: TextStyle(color: white),
+        )),
+        Center(
+            child: Text(
+          "chats",
+          style: TextStyle(color: white),
+        )),
+        Center(
+            child: Text(
+          "Settings",
+          style: TextStyle(color: white),
+        )),
+      ],
     );
   }
 
@@ -33,19 +58,44 @@ class _RootAppState extends State<RootApp> {
         width: double.infinity,
         decoration: BoxDecoration(color: greyColor),
         child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(top: 5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: List.generate(3, (index) {
-                return Column(
-                  children: [
-                    Icon(iconsItems[index],
-                        size: 30, color: white.withOpacity(0.5)),
-                    SizedBox(height: 3),
-                    Text(textItems[index],
-                        style: TextStyle(
-                            fontSize: 11, color: white.withOpacity(0.5)))
-                  ],
+                return GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      pageIndex = index;
+                    });
+                  },
+                  child: Column(
+                    children: [
+                      index == 1
+                          ? Badge(
+                              label: Text(
+                                "3",
+                                style: TextStyle(color: white),
+                              ),
+                              child: Icon(iconsItems[index],
+                                  size: 30,
+                                  color: pageIndex == index
+                                      ? primary
+                                      : white.withOpacity(0.5)),
+                            )
+                          : Icon(iconsItems[index],
+                              size: 30,
+                              color: pageIndex == index
+                                  ? primary
+                                  : white.withOpacity(0.5)),
+                      SizedBox(height: 3),
+                      Text(textItems[index],
+                          style: TextStyle(
+                              fontSize: 11,
+                              color: pageIndex == index
+                                  ? primary
+                                  : white.withOpacity(0.5)))
+                    ],
+                  ),
                 );
               }),
             )));
