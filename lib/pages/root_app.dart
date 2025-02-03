@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_telegrame_clone/pages/contact_page.dart';
 import 'package:flutter_telegrame_clone/theme/colors.dart';
 
 class RootApp extends StatefulWidget {
@@ -23,11 +24,7 @@ class _RootAppState extends State<RootApp> {
     return IndexedStack(
       index: pageIndex,
       children: [
-        Center(
-            child: Text(
-          "Contact",
-          style: TextStyle(color: white),
-        )),
+        ContactPage(),
         Center(
             child: Text(
           "chats",
