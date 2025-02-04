@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_telegrame_clone/theme/colors.dart';
+import 'package:line_icons/line_icons.dart';
 
 class ContactPage extends StatefulWidget {
   const ContactPage({Key? key}) : super(key: key);
@@ -15,8 +16,9 @@ class _ContactPageState extends State<ContactPage> {
       backgroundColor: bgColor,
       appBar: PreferredSize(
         child: getAppBar(),
-        preferredSize: Size.fromHeight(80),
+        preferredSize: Size.fromHeight(60),
       ),
+      body: getBody(),
     );
   }
 
@@ -30,8 +32,37 @@ class _ContactPageState extends State<ContactPage> {
           icon: Text(
             "Sort",
             style: TextStyle(
-                fontSize: 16, color: primary, fontWeight: FontWeight.w500),
+                fontSize: 20, color: primary, fontWeight: FontWeight.w500),
           )),
+      actions: [
+        IconButton(
+          onPressed: null,
+          icon: Icon(LineIcons.plus, color: primary),
+        ),
+      ],
     );
   }
+}
+
+Widget getBody() {
+  return SingleChildScrollView(
+    child: Column(
+      children: [
+        Container(
+            height: 68,
+            decoration: BoxDecoration(
+              color: greyColor,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: 38,
+                  decoration: BoxDecoration(color: bgColor),
+                )
+              ],
+            ))
+      ],
+    ),
+  );
 }
