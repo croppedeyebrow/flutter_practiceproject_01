@@ -69,13 +69,62 @@ Widget getBody() {
                       decoration: InputDecoration(
                           border: InputBorder.none,
                           prefixIcon: Icon(LineIcons.search,
-                              color: white.withOpacity(0.3))),
+                              color: white.withOpacity(0.3)),
+                          hintText: "Search",
+                          hintStyle: TextStyle(
+                              color: white.withOpacity(0.3), fontSize: 17)),
                     ),
                   )
                 ],
               ),
-            ))
+            )),
+        SizedBox(height: 10),
+        getSectionIcons()
       ],
+    ),
+  );
+}
+
+Widget getSectionIcons() {
+  List icons = [
+    {
+      "icon": LineIcons.mapMarker,
+      "label": "Find People Nearby",
+    },
+    {
+      "icon": LineIcons.userPlus,
+      "label": "Invite Friends",
+    }
+  ];
+  return Padding(
+    padding: const EdgeInsets.only(left: 10),
+    child: Column(
+      children: List.generate(icons.length, (index) {
+        return Column(
+          children: [
+            Row(
+              children: [
+                Icon(icons[index]["icon"], color: primary, size: 28),
+                SizedBox(width: 20),
+                Text(
+                  icons[index]['label'],
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: primary,
+                      fontWeight: FontWeight.w500),
+                )
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 50),
+              child: Divider(
+                thickness: 1,
+                color: white.withOpacity(0.15),
+              ),
+            )
+          ],
+        );
+      }),
     ),
   );
 }
