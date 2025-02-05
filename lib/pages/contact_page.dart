@@ -153,7 +153,18 @@ Widget getContactLists() {
                           fontSize: 17,
                           color: white,
                           fontWeight: FontWeight.w500),
-                    )
+                    ),
+                    SizedBox(height: 2),
+                    Text(
+                        contact_data[index]['is_online']
+                            ? "online"
+                            : contact_data[index]['seen'],
+                        style: TextStyle(
+                            fontSize: 13,
+                            color: contact_data[index]['is_online']
+                                ? primary
+                                : white.withOpacity(0.5),
+                            fontWeight: FontWeight.w500))
                   ],
                 )
               ],
