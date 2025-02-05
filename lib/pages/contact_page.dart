@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_telegrame_clone/json/contact_json.dart';
 import 'package:flutter_telegrame_clone/theme/colors.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -79,7 +80,8 @@ Widget getBody() {
               ),
             )),
         SizedBox(height: 10),
-        getSectionIcons()
+        getSectionIcons(),
+        getContactLists()
       ],
     ),
   );
@@ -121,6 +123,40 @@ Widget getSectionIcons() {
                 thickness: 1,
                 color: white.withOpacity(0.15),
               ),
+            )
+          ],
+        );
+      }),
+    ),
+  );
+}
+
+Widget getContactLists() {
+  return Padding(
+    padding: const EdgeInsets.only(left: 10),
+    child: Column(
+      children: List.generate(contact_data.length, (index) {
+        return Column(
+          children: [
+            Row(
+              children: [
+                CircleAvatar(
+                  backgroundImage: NetworkImage(contact_data[index]['img']),
+                ),
+                SizedBox(width: 12),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      contact_data[index]['name'],
+                      style: TextStyle(
+                          fontSize: 17,
+                          color: white,
+                          fontWeight: FontWeight.w500),
+                    )
+                  ],
+                )
+              ],
             )
           ],
         );
