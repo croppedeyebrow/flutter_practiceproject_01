@@ -53,14 +53,27 @@ Widget getBody() {
             decoration: BoxDecoration(
               color: greyColor,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: 38,
-                  decoration: BoxDecoration(color: bgColor),
-                )
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: 38,
+                    decoration: BoxDecoration(
+                        color: bgColor,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: TextField(
+                      style: TextStyle(color: white),
+                      cursorColor: primary,
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          prefixIcon: Icon(LineIcons.search,
+                              color: white.withOpacity(0.3))),
+                    ),
+                  )
+                ],
+              ),
             ))
       ],
     ),
