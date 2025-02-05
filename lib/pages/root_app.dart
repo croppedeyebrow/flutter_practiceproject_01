@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_telegrame_clone/pages/contact_page.dart';
+import 'package:flutter_telegrame_clone/pages/chats_page.dart';
 import 'package:flutter_telegrame_clone/theme/colors.dart';
 
 class RootApp extends StatefulWidget {
@@ -25,11 +26,7 @@ class _RootAppState extends State<RootApp> {
       index: pageIndex,
       children: [
         ContactPage(),
-        Center(
-            child: Text(
-          "chats",
-          style: TextStyle(color: white),
-        )),
+        ChatsPage(),
         Center(
             child: Text(
           "Settings",

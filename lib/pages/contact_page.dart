@@ -168,6 +168,10 @@ Widget getContactLists() {
                   ],
                 )
               ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 50),
+              child: Divider(thickness: 1, color: white.withOpacity(0.16)),
             )
           ],
         );
