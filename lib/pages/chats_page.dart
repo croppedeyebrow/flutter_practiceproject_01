@@ -116,7 +116,12 @@ class _ChatsPageState extends State<ChatsPage> {
                               color: white,
                               fontWeight: FontWeight.w600),
                           maxLines: 2,
-                        ))
+                        )),
+                    Text(
+                      chat_data[index]['date'],
+                      style: TextStyle(
+                          fontSize: 14, color: white.withOpacity(0.4)),
+                    )
                   ],
                 )
               ],
