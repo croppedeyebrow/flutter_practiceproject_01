@@ -103,9 +103,10 @@ class _ChatsPageState extends State<ChatsPage> {
               child: Container(
             height: 70,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
                         width: (size.width - 40) * 0.6,
@@ -119,10 +120,48 @@ class _ChatsPageState extends State<ChatsPage> {
                         )),
                     Text(
                       chat_data[index]['date'],
-                      style: TextStyle(
-                          fontSize: 14, color: white.withOpacity(0.4)),
+                      style:
+                          TextStyle(fontSize: 14, color: white.withAlpha(40)),
                     )
                   ],
+                ),
+                SizedBox(
+                  height: 4,
+                ),
+                Container(
+                  width: (size.width - 40) * 1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          chat_data[index]['text'],
+                          style: TextStyle(
+                            fontSize: 15,
+                            height: 1.3,
+                            color: white.withAlpha(100),
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      SizedBox(width: 8),
+                      chat_data[index]['badge'] > 0
+                          ? Badge(
+                              backgroundColor: primary,
+                              label: Padding(
+                                padding: const EdgeInsets.all(1),
+                                child: Text(
+                                  chat_data[index]['badge'].toString(),
+                                  style: TextStyle(color: white),
+                                ),
+                              ),
+                            )
+                          : Container()
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: white.withAlpha(20),
                 )
               ],
             ),
