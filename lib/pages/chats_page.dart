@@ -89,18 +89,20 @@ class _ChatsPageState extends State<ChatsPage> {
     var size = MediaQuery.of(context).size;
     return Column(
       children: List.generate(chat_data.length, (index) {
-        return Padding(
-          padding: const EdgeInsets.only(left: 12, right: 12, top: 5),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (_) => ChatDetailPage(
-                            name: chat_data[index]['name'],
-                            img: chat_data[index]['img'],
-                          )));
-            },
+        return GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ChatDetailPage(
+                  name: chat_data[index]['name'],
+                  img: chat_data[index]['img'],
+                ),
+              ),
+            );
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(left: 12, right: 12, top: 5),
             child: Row(children: [
               Container(
                 width: 60,
