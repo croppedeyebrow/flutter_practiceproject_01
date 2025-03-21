@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_telegrame_clone/json/chat_json.dart';
 import 'package:flutter_telegrame_clone/theme/colors.dart';
+import 'package:flutter_telegrame_clone/widgets/chat_bubble.dart';
 
 class ChatDetailPage extends StatefulWidget {
   final String name;
@@ -21,6 +23,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
         preferredSize: Size.fromHeight(60),
       ),
       bottomNavigationBar: getBottomBar(),
+      body: getBody(),
     );
   }
 
@@ -110,5 +113,18 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
         ),
       ),
     );
+  }
+
+  Widget getBody() {
+    return ListView(
+        padding: EdgeInsets.only(top: 20, bottom: 80),
+        children: List.generate(messages.length, (index) {
+          return CustomBubbleChat(
+              isMe: messages[index]['isMe'], // 짝수 인덱스는 내 메시지
+              message: messages[index]['message'],
+              time: messages[index]['time'],
+              isLast: messages[index]['isLast'] // 마지막 메시지
+              );
+        }));
   }
 }
